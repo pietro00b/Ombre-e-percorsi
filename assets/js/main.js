@@ -49,4 +49,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const lazyImages = document.querySelectorAll('img[data-src]');
     lazyImages.forEach(img => imageObserver.observe(img));
   }
+
+  // Lightbox per le foto degli album
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const albumPhotos = document.querySelectorAll('.album-photo');
+
+  if (lightbox && lightboxImage && albumPhotos.length > 0) {
+    const openLightbox = (photo) => {
+      lightboxImage.src = photo.dataset.full;
+      lightboxCaption.textContent = photo.dataset.caption || '';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      lightboxImage.src = '';
+      document.body.style.overflow = '';
+    };
+
+    albumPhotos.forEach(photo => {
+      photo.addEventListener('click', () => openLightbox(photo));
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  }
 });
