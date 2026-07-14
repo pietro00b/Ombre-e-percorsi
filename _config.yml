@@ -18,29 +18,25 @@ social:
 # Build settings
 markdown: kramdown
 highlighter: rouge
-permalink: /:year/:month/:day/:title/
 timezone: Europe/Rome
 lang: it
-
-# Paginazione 
-paginate: 6
-paginate_path: "/pagina:num/"
 
 # Plugin (solo quelli supportati da GitHub Pages)
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-paginate
+
+# Collection degli album fotografici
+collections:
+  albums:
+    output: true
+    permalink: /album/:path/
 
 # Menu di navigazione
 navigation:
   - title: "Home"
     url: "/"
-  - title: "Archivio"
-    url: "/archivio/"
-  - title: "Galleria"
-    url: "/galleria/"
   - title: "Chi sono"
     url: "/about/"
 
@@ -74,13 +70,6 @@ sass:
 defaults:
   - scope:
       path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      comments: false
-      share: true
-  - scope:
-      path: ""
       type: "pages"
     values:
       layout: "page"
@@ -88,3 +77,8 @@ defaults:
       path: "pages"
     values:
       layout: "page"
+  - scope:
+      path: ""
+      type: "albums"
+    values:
+      layout: "album"
