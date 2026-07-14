@@ -2,85 +2,33 @@
 layout: default
 ---
 
+{% assign albums = site.albums | sort: "date" | reverse %}
+
 <div class="homepage">
-  <div class="posts-grid">
-    {% for post in paginator.posts %}
-    <article class="post-card">
-      {% if post.featured_image %}
-      <div class="post-card-image">
-        <a href="{{ post.url | relative_url }}">
-          <img src="{{ post.featured_image | relative_url }}" alt="{{ post.title }}" loading="lazy">
-        </a>
+  {% if albums.size > 0 %}
+  <div class="albums-grid">
+    {% for album in albums %}
+    {% assign cover_path = "/assets/images/albums/" | append: album.folder | append: "/" | append: album.cover %}
+    <a href="{{ album.url | relative_url }}" class="album-card">
+      <div class="album-card-image">
+        <img src="{{ cover_path | relative_url }}" alt="{{ album.title }}" loading="lazy">
       </div>
-      {% endif %}
-      
-      <div class="post-card-content">
-        <div class="post-card-meta">
-          <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">
-            {{ post.date | date: "%d %B %Y" }}
-          </time>
-          
-          {% if post.location %}
-          <span class="post-location">
-            📍 {{ post.location }}
-          </span>
-          {% endif %}
-          
-          {% if post.categories.size > 0 %}
-          <div class="post-categories">
-            {% for category in post.categories limit:2 %}
-            <span class="post-category">{{ category }}</span>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </div>
-        
-        <h2 class="post-card-title">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </h2>
-        
-        <div class="post-card-excerpt">
-          {% if post.excerpt %}
-            {{ post.excerpt | strip_html | truncate: 150 }}
-          {% else %}
-            {{ post.content | strip_html | truncate: 150 }}
-          {% endif %}
-        </div>
-        
-        <div class="post-card-footer">
-          <a href="{{ post.url | relative_url }}" class="read-more">Leggi tutto</a>
-          
-          {% if post.tags.size > 0 %}
-          <div class="post-tags">
-            {% for tag in post.tags limit:3 %}
-            <span class="tag">{{ tag }}</span>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </div>
+      <div class="album-card-info">
+        <h2 class="album-card-title">{{ album.title }}</h2>
+        {% if album.location %}
+        <span class="album-card-location">📍 {{ album.location }}</span>
+        {% endif %}
+        {% if album.description %}
+        <p class="album-card-description">{{ album.description | truncate: 100 }}</p>
+        {% endif %}
       </div>
-    </article>
+    </a>
     {% endfor %}
   </div>
-
-  <!-- Paginazione -->
-  {% if paginator.total_pages > 1 %}
-  <nav class="pagination">
-    {% if paginator.previous_page %}
-      {% if paginator.previous_page == 1 %}
-      <a href="{{ '/' | relative_url }}" class="pagination-link">← Più recenti</a>
-      {% else %}
-      <a href="{{ '/pagina' | append: paginator.previous_page | append: '/' | relative_url }}" class="pagination-link">← Più recenti</a>
-      {% endif %}
-    {% endif %}
-
-    <span class="pagination-info">
-      Pagina {{ paginator.page }} di {{ paginator.total_pages }}
-    </span>
-
-    {% if paginator.next_page %}
-    <a href="{{ '/pagina' | append: paginator.next_page | append: '/' | relative_url }}" class="pagination-link">Più vecchi →</a>
-    {% endif %}
-  </nav>
+  {% else %}
+  <div class="no-images">
+    <p>L'archivio è ancora vuoto.</p>
+    <p>Crea il tuo primo album aggiungendo un file in <code>_albums/</code>.</p>
+  </div>
   {% endif %}
 </div>
