@@ -1,6 +1,6 @@
 ---
 title: "Armenia"
-date: 04/2026
+date: 2026-04-01
 location: "Armenia"
 description: "Rullino a colori scaduto"
 folder: "armenia"
