@@ -1,16 +1,16 @@
 ---
 layout: page
-title: Chi sono
-subtitle: Dietro le fotografie
+title: Note
+subtitle: 
 permalink: /about/
 ---
 
-Ciao, sono **Pietro**. Questo sito ha l'obiettivo di essere un piccolo archivio fotografico. Tracce di luoghi visitati e persone incontrate.
+Ciao, sono **Pietro**. Questo sito è un piccolo archivio fotografico personale. 
 
 
 ---
 
-## Contatti
+## Repository pubblico
 
 
 {% if site.social.github %}
