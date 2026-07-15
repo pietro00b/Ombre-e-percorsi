@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Note
+title: Ciao :)
 subtitle: 
 permalink: /about/
 ---
 
-Ciao, sono **Pietro**. Questo sito è un piccolo archivio fotografico personale. 
+Sono **Pietro**. Questo sito è un piccolo archivio fotografico personale. 
 
 
 ---
