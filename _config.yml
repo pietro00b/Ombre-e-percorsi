@@ -1,6 +1,6 @@
 # Informazioni del sito
 title: "Ombre e Percorsi"
-description: "Tracce di luoghi, storie e persone"
+description: "Fotografie Luoghi Persone"
 baseurl: ""  # ← CAMBIATO: vuoto per dominio personalizzato
 url: "https://ombrepercorsi.com"  # ← CAMBIATO: il tuo nuovo dominio
 
@@ -35,9 +35,9 @@ collections:
 
 # Menu di navigazione
 navigation:
-  - title: "Home"
+  - title: "Archivio"
     url: "/"
-  - title: "Chi sono"
+  - title: "Note"
     url: "/about/"
 
 # Esclusioni
