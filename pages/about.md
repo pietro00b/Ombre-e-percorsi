@@ -5,7 +5,7 @@ subtitle:
 permalink: /about/
 ---
 
-Sono **Pietro**. Questo sito è un piccolo archivio fotografico personale. 
+Mi chiamo **Pietro**. Questo sito è un piccolo archivio fotografico personale. 
 
 
 ---
