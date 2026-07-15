@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+{% assign folder_path = "/assets/images/albums/" | append: page.folder | append: "/" %}
+{% assign photos = site.static_files | where_exp: "f", "f.path contains folder_path" %}
+{% assign photos = photos | sort: "name" %}
+
+<article class="album">
+  <header class="album-header">
+    <a href="{{ '/' | relative_url }}" class="album-back">← Tutti gli album</a>
+    <h1 class="album-title">{{ page.title }}</h1>
+    {% if page.location %}
+    <p class="album-location">📍 {{ page.location }}</p>
+    {% endif %}
+    {% if page.description %}
+    <p class="album-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  {% if photos.size > 0 %}
+  <div class="album-grid">
+    {% for photo in photos %}
+    {% assign caption = page.captions[photo.name] %}
+    <figure class="album-photo" data-full="{{ photo.path | relative_url }}" data-caption="{{ caption | default: '' | escape }}">
+      <div class="album-photo-frame">
+        <img src="{{ photo.path | relative_url }}" alt="{{ caption | default: page.title }}" loading="lazy">
+      </div>
+      {% if caption %}
+      <figcaption>{{ caption }}</figcaption>
+      {% endif %}
+    </figure>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="no-images">
+    <p>Questo album non ha ancora foto.</p>
+    <p>Aggiungi le immagini nella cartella <code>assets/images/albums/{{ page.folder }}/</code>.</p>
+  </div>
+  {% endif %}
+</article>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Chiudi">&times;</button>
+  <img class="lightbox-image" id="lightbox-image" src="" alt="">
+  <p class="lightbox-caption" id="lightbox-caption"></p>
+</div>
