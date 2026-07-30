@@ -5,8 +5,9 @@ subtitle:
 permalink: /about/
 ---
 
-Mi chiamo **Pietro**. Questo sito è un piccolo archivio fotografico personale. 
+Mi chiamo **Pietro**. Questo sito è un piccolo archivio personale di scansioni di fotografie analogiche.
 
+Tutte le foto sono state scattate con una fotocamera analogica Nikon F90.
 
 ---
 
